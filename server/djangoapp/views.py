@@ -20,11 +20,9 @@ def login_user(request):
     data = json.loads(request.body)
     username = data.get('userName')
     password = data.get('password')
-
     # Try to authenticate the user
     user = authenticate(username=username, password=password)
     response_data = {"userName": username}
-
     if user is not None:
         # If user is valid, log them in and return status
         login(request, user)
