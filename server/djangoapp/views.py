@@ -39,6 +39,7 @@ def logout_request(request):
     logout(request)
     return JsonResponse({"userName": ""})
 
+
 @csrf_exempt
 def registration(request):
     data = json.loads(request.body)
@@ -66,6 +67,7 @@ def get_cars(request):
     cars = [{"CarModel": car_model.name, "CarMake": car_model.car_make.name} for car_model in car_models]
     return JsonResponse({"CarModels": cars})
 
+
 # Update the `get_dealerships` view to list dealerships based on state
 def get_dealerships(request, state="All"):
     endpoint = "/fetchDealers"
@@ -73,6 +75,7 @@ def get_dealerships(request, state="All"):
         endpoint += f"/{state}"
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
+
 
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
@@ -87,6 +90,7 @@ def get_dealer_reviews(request, dealer_id):
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
+
 # Create a `get_dealer_details` view to render the dealer details
 def get_dealer_details(request, dealer_id):
     if dealer_id:
@@ -95,6 +99,7 @@ def get_dealer_details(request, dealer_id):
         return JsonResponse({"status": 200, "dealer": dealership})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
+
 
 # Create an `add_review` view to submit a review
 def add_review(request):
@@ -108,3 +113,5 @@ def add_review(request):
             return JsonResponse({"status": 401, "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
+
+
