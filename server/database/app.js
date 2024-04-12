@@ -33,7 +33,7 @@ try {
 
 
 // Express route to home
-app.get('/', async (req, res) => {res.send("Welcome to the Mongoose API")});
+app.get('/', async (req, res) => {res.send("Welcome to the Mongoose API");});
 
 // Express route to fetch all reviews
 app.get('/fetchReviews', async (req, res) => {
